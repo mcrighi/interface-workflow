@@ -4,13 +4,13 @@ Official page of the AiiDA workflow able to calculate adhesion energy and ideal 
 
 ## Getting Started
 
-To run the workflow it is necessary to install AiiDA v0.12.0. Further details on AiiDA installation can be found [here](http://aiida-core.readthedocs.io/en/stable/installation/index.html).
+To run the workflow it is necessary to install AiiDA v0.9.1. Further details on AiiDA installation can be found [here](http://aiida-core.readthedocs.io/en/stable/installation/index.html).
 
 ## Run calculation
 
 Once AiiDA is properly installed, it is possible to run the workflow. First, it is necessary to modify the input file (further details for the input parameters can be foud in the [input.in](input.in) page). Then, it is possible to run the workflow with the following command:
 
-      nohup verdi run work_shearstrength_2_0.py > output.out &
+      nohup verdi run work_shearstrength_1_9.py > output.out &
 
 ## Calculation outputs
 
