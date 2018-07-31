@@ -2,19 +2,23 @@
 # Every line in the upper section has to be set although the order does not matter.
 # If a line in the upper section is missing, the workflow will exit with a warning.
 # The lower section can also be changed but should be OK for most tasks. If it is not set, defaults will be used.
-#---------------------------------------------------------------------------------------------------------------
 element = Cu                        # The element that you want to calculate
-lattice = fcc                       # The lattice of your structure. Currently supported are: fcc, bcc, diamond, and graphene
+lattice = fcc                       # The lattice of your structure. Currently supported are: fcc, bcc, diamond, graphene and hcp
 lattice_constant = 3.6              # The lattice parameter of your structure in angstrom (this will be optimized)
-selected_surface = 111              # Miller indices of the surface you want to choose. Currently supported are: 100, 110, and 111. Is not needed if graphene is calculated.
+selected_surface = 111              # Miller indices of the surface you want to choose. Currently supported are: 001, 110, 111, 0001.
 use_vdW = False                     # If 'True', London dispersion forces are added. If 'Flase', they are not.
 is_metal = True                     # Select 'True' if you calculate a metal, so the smearing will be changed. Use 'False' otherwise.
 is_magnetic = False                 # Select 'True' to use spin polarized calculations and allow for magnetism. Use 'False' otherwise.
+pw_code = PW5.2_6c@hydra_s3par6c    # Name of the code for the PW calulation and (after the @) the computer you want to calculate on. Both must be configured first!
+pp_code = PP5.2_6c@hydra_s3par6c    # Name of the code for the PP calulation and (after the @) the computer you want to calculate on. Both must be configured first!
 pseudopotential_family = pbe-rrkjus # Pseude potential family to be used. Must be configured first!
-external_pressure = 2.0             # external pressure on the interface in GPa.
-#The following lines are optional parameters and can be omitted from the file sice default values exist.
-relative_tolerance_volume = 0.0005  # Convergence parameter for volume optimization. (vol_new-vol_old)/vol_old <= tolerance
-energy_tolerance = 0.001            # Convergence parameter for energy cutoff and k-point density optimization. Given in eV/Atom.
-charge_cutoff_multiplier = 8        # Determines the energy cutoff for the charge density by multiplication of converged value for WFs
-vdW_scaling = 0.65                  # Scaling parameter s6 for London dispersion forces. Tune to 0.65 for graphene.
 #---------------------------------------------------------------------------------------------------------------
+relative_tolerance_volume = 0.0005  # Convergence parameter for volume optimization. (vol_new-vol_old)/vol_old <= tolerance
+energy_tolerance = 0.001            # Convergence parameter for kpoint optimization. Given in eV/Atom
+charge_cutoff_multiplier = 8        # Determines the energy cutoff for the charge density by multiplication of converged value for WFs
+scf_wallclock_max_time = 1800       # Maximum Wallclock time for scf calculation in seconds
+relax_wallclock_max_time = 86400    # Maximum Wallclock time for relaxations in seconds
+vdW_scaling = 0.65                  # Scaling parameter s6 for London dispersion forces. Tune to 0.65 for graphene.
+bands = 0                           # Total number of calculated electronic states (bands) for the single slab. Put 0 to use the deafult value adopted by QE.
+#---------------------------------------------------------------------------------------------------------------
+
